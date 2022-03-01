@@ -1,0 +1,28 @@
+[package]
+name = "auxiliary"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+default = ["devnet"]
+mainnet = []
+devnet = []
+
+[dependencies]
+anchor-lang = "0.22.0"
+anchor-client = "0.22.0"
+solana-client = "1.9.9"
+solana-program = "1.9.9"
+solana-sdk = "1.9.9"
+solana-rpc = "1.9.9"
+solana-account-decoder = "1.9.9"
+solana-transaction-status = "1.9.9"
+pyth-client = "0.5.0"
+dotenv = "0.15.0"
+clap = { version = "3.1.2", default-features = false, features = ["std", "derive", "env"] }
+tokio = { version = "1", features = ["rt-multi-thread", "time", "macros", "sync"] }
+futures = "0.3"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+thiserror = "1"
+spl-token = "3.2"
