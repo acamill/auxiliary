@@ -27,7 +27,7 @@ For more information, see the program's help menu, `auxiliary --help`.
 ```Rust
 // Development -> product in /target/debug/
 cargo build // --features devnet
-cargo run -- --payer ~/.config/solana/id.json arbitrage --tickrate 800 // ms
+cargo run -- --payer ~/.config/solana/id.json pricefetch --interval 800 // ms
 
 // Release -> product in /target/release/
 cargo build --release --no-default-features --features mainnet 
@@ -56,3 +56,7 @@ Install Solana <https://docs.solana.com/cli/install-solana-cli-tools>
 
 (not needed yet)
 Install Anchor <https://project-serum.github.io/anchor/getting-started/installation.html#install-solana>
+
+## Misc 
+
+Based of 01Protocol Keeper, stripped down

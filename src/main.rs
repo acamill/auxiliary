@@ -27,10 +27,10 @@ struct Cli {
 #[derive(Subcommand)]
 enum Command {
     /// Do stuff
-    Arbitrage {
-        /// Interval for oracle price checks, in miliseconds
-        #[clap(long, default_value = "400", parse(try_from_str = parse_miliseconds))]
-        tickrate: Duration,
+    PriceFetch {
+        /// Interval for oracle price checks, in milliseconds
+        #[clap(long, default_value = "400", parse(try_from_str = parse_milliseconds))]
+        interval: Duration,
     },
 }
 
@@ -81,10 +81,10 @@ fn main() -> Result<(), lib::Error> {
         .unwrap();
 
     match command {
-        Command::Arbitrage { tickrate } => {
+        Command::PriceFetch { interval } => {
             rt.block_on(lib::price_engine::run(
                 app_state,
-                lib::price_engine::PriceEngineConfig { tickrate },
+                lib::price_engine::PriceFetchConfig { interval },
             ))?;
         }
     };
@@ -92,6 +92,6 @@ fn main() -> Result<(), lib::Error> {
     Ok(())
 }
 
-fn parse_miliseconds(s: &str) -> Result<Duration, ParseIntError> {
+fn parse_milliseconds(s: &str) -> Result<Duration, ParseIntError> {
     <u64 as std::str::FromStr>::from_str(s).map(Duration::from_millis)
 }

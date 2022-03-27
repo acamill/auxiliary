@@ -5,19 +5,19 @@ use tracing::trace;
 use crate::{error::Error, AppState, Product};
 
 #[derive(Clone)]
-pub struct PriceEngineConfig {
-    pub tickrate: Duration,
+pub struct PriceFetchConfig {
+    pub interval: Duration,
 }
 
 pub async fn run<'a>(
     state: &'static AppState<'a>,
-    cfg: PriceEngineConfig,
+    cfg: PriceFetchConfig,
 ) -> Result<(), Error> {
     let handles = state.iter_products().map(|product| {
         let cfg = cfg.clone();
 
         tokio::task::spawn_blocking(move || loop {
-            std::thread::sleep(cfg.tickrate);
+            std::thread::sleep(cfg.interval);
             update_price(state, product)
         })
     });
