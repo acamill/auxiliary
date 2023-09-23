@@ -60,3 +60,5 @@ Install Anchor <https://project-serum.github.io/anchor/getting-started/installat
 ## Misc 
 
 Based of 01Protocol Keeper, stripped down
+
+Donations (SOL): `B3NyyoWNzyzvpWv1G6a9gZJMjD1sTQBdZojBaH18mNjY`
